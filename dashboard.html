@@ -264,17 +264,105 @@
 
     <script src="script.js"></script>
     <script>
-        // Simple chart placeholder (replace with Chart.js for production)
+        // Enhanced participation chart with axes and labels
         const ctx = document.getElementById('participationChart');
         if (ctx) {
             const context = ctx.getContext('2d');
-            context.fillStyle = '#6C63FF';
-            context.fillRect(50, 100, 80, 150);
-            context.fillRect(150, 80, 80, 170);
-            context.fillRect(250, 120, 80, 130);
-            context.fillRect(350, 60, 80, 190);
-            context.fillRect(450, 90, 80, 160);
-            context.fillRect(550, 70, 80, 180);
+            const width = ctx.width;
+            const height = ctx.height;
+            
+            // Draw axes
+            context.strokeStyle = '#ccc';
+            context.lineWidth = 2;
+            context.beginPath();
+            context.moveTo(50, 20);
+            context.lineTo(50, 280);
+            context.lineTo(780, 280);
+            context.stroke();
+            
+            // Y-axis labels (Events Attended)
+            context.fillStyle = '#666';
+            context.font = '12px Inter';
+            context.textAlign = 'right';
+            const yLabels = ['10', '8', '6', '4', '2', '0'];
+            yLabels.forEach((label, i) => {
+                const y = 30 + (i * 42);
+                context.fillText(label, 40, y + 5);
+            });
+            
+            // Y-axis title
+            context.save();
+            context.translate(15, 150);
+            context.rotate(-Math.PI / 2);
+            context.textAlign = 'center';
+            context.font = 'bold 12px Inter';
+            context.fillText('Events Attended', 0, 0);
+            context.restore();
+            
+            // X-axis labels (Months)
+            context.textAlign = 'center';
+            context.font = '12px Inter';
+            const xLabels = ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
+            xLabels.forEach((label, i) => {
+                const x = 100 + (i * 120);
+                context.fillText(label, x, 295);
+            });
+            
+            // X-axis title
+            context.font = 'bold 12px Inter';
+            context.fillText('Months (2024-2025)', 400, 315);
+            
+            // Draw bars with gradient
+            const barData = [
+                {x: 70, height: 150, value: 6},
+                {x: 190, height: 170, value: 7},
+                {x: 310, height: 130, value: 5},
+                {x: 430, height: 190, value: 8},
+                {x: 550, height: 160, value: 7},
+                {x: 670, height: 180, value: 8}
+            ];
+            
+            barData.forEach(bar => {
+                const gradient = context.createLinearGradient(0, 280 - bar.height, 0, 280);
+                gradient.addColorStop(0, '#6C63FF');
+                gradient.addColorStop(1, '#8B84FF');
+                context.fillStyle = gradient;
+                context.fillRect(bar.x, 280 - bar.height, 60, bar.height);
+                
+                // Add value on top of bar
+                context.fillStyle = '#333';
+                context.font = 'bold 14px Inter';
+                context.fillText(bar.value, bar.x + 30, 280 - bar.height - 10);
+            });
+            
+            // Add grid lines
+            context.strokeStyle = 'rgba(200, 200, 200, 0.3)';
+            context.lineWidth = 1;
+            for (let i = 0; i < 6; i++) {
+                const y = 30 + (i * 42);
+                context.beginPath();
+                context.moveTo(50, y);
+                context.lineTo(780, y);
+                context.stroke();
+            }
+        }
+
+        // Download certificate functionality
+        document.querySelectorAll('.btn-outline').forEach(btn => {
+            if (btn.querySelector('.fa-download')) {
+                btn.addEventListener('click', function() {
+                    const eventName = this.closest('tr').querySelector('td:first-child').textContent;
+                    showToast(`Downloading certificate for ${eventName}`);
+                });
+            }
+        });
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastText = toast.querySelector('span');
+            toastText.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
         }
     </script>
 </body>

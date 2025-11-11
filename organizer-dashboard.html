@@ -231,20 +231,130 @@
 
     <script src="script.js"></script>
     <script>
+        // Enhanced Chart with axes and labels
         const ctx = document.getElementById('trendChart');
         if (ctx) {
             const context = ctx.getContext('2d');
+            const width = ctx.width;
+            const height = ctx.height;
+            
+            // Draw axes
+            context.strokeStyle = '#ccc';
+            context.lineWidth = 2;
+            context.beginPath();
+            context.moveTo(50, 20);
+            context.lineTo(50, 280);
+            context.lineTo(780, 280);
+            context.stroke();
+            
+            // Y-axis labels
+            context.fillStyle = '#666';
+            context.font = '12px Inter';
+            context.textAlign = 'right';
+            const yLabels = ['1200', '1000', '800', '600', '400', '200', '0'];
+            yLabels.forEach((label, i) => {
+                const y = 30 + (i * 40);
+                context.fillText(label, 40, y + 5);
+            });
+            
+            // X-axis labels
+            context.textAlign = 'center';
+            const xLabels = ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
+            xLabels.forEach((label, i) => {
+                const x = 100 + (i * 120);
+                context.fillText(label, x, 295);
+            });
+            
+            // Draw data line
             context.strokeStyle = '#6C63FF';
             context.lineWidth = 3;
             context.beginPath();
-            context.moveTo(50, 200);
-            context.lineTo(150, 180);
-            context.lineTo(250, 150);
-            context.lineTo(350, 120);
-            context.lineTo(450, 100);
-            context.lineTo(550, 80);
+            context.moveTo(100, 230);
+            context.lineTo(220, 210);
+            context.lineTo(340, 170);
+            context.lineTo(460, 130);
+            context.lineTo(580, 90);
+            context.lineTo(700, 60);
             context.stroke();
+            
+            // Draw data points
+            context.fillStyle = '#6C63FF';
+            [
+                {x: 100, y: 230},
+                {x: 220, y: 210},
+                {x: 340, y: 170},
+                {x: 460, y: 130},
+                {x: 580, y: 90},
+                {x: 700, y: 60}
+            ].forEach(point => {
+                context.beginPath();
+                context.arc(point.x, point.y, 6, 0, Math.PI * 2);
+                context.fill();
+            });
+            
+            // Add gradient fill under line
+            const gradient = context.createLinearGradient(0, 0, 0, 280);
+            gradient.addColorStop(0, 'rgba(108, 99, 255, 0.2)');
+            gradient.addColorStop(1, 'rgba(108, 99, 255, 0)');
+            context.fillStyle = gradient;
+            context.beginPath();
+            context.moveTo(100, 230);
+            context.lineTo(220, 210);
+            context.lineTo(340, 170);
+            context.lineTo(460, 130);
+            context.lineTo(580, 90);
+            context.lineTo(700, 60);
+            context.lineTo(700, 280);
+            context.lineTo(100, 280);
+            context.closePath();
+            context.fill();
         }
+
+        // Button functionality
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const icon = this.querySelector('i');
+                if (icon && icon.classList.contains('fa-plus')) {
+                    window.location.href = 'event-details.html';
+                } else if (icon && icon.classList.contains('fa-edit')) {
+                    showToast('Opening event editor...');
+                } else if (icon && icon.classList.contains('fa-trash')) {
+                    if (confirm('Are you sure you want to delete this event?')) {
+                        showToast('Event deleted successfully');
+                        this.closest('tr').remove();
+                    }
+                } else if (icon && icon.classList.contains('fa-chart-line')) {
+                    showToast('Loading analytics...');
+                } else if (icon && icon.classList.contains('fa-eye')) {
+                    window.location.href = 'event-details.html';
+                } else if (icon && icon.classList.contains('fa-certificate')) {
+                    showToast('Certificate generator opened');
+                } else if (icon && icon.classList.contains('fa-download')) {
+                    showToast('Generating certificates...');
+                } else if (icon && icon.classList.contains('fa-paper-plane')) {
+                    e.preventDefault();
+                    showToast('Announcement sent to all attendees!');
+                }
+            });
+        });
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastText = toast.querySelector('span');
+            toastText.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Sidebar navigation
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                showToast('Navigating to ' + this.textContent.trim());
+            });
+        });
     </script>
 </body>
 </html>
