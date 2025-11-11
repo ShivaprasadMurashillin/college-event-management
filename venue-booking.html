@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue Booking - CampusEvents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header { padding: var(--space-6) 0 var(--space-4); background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(255, 107, 107, 0.05)); text-align: center; }
+        .venues-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--space-4); margin: var(--space-6) 0; }
+        .venue-card { background: var(--bg-primary); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: transform var(--transition); }
+        .venue-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
+        .venue-image { width: 100%; height: 250px; object-fit: cover; }
+        .venue-content { padding: var(--space-3); }
+        .venue-amenities { display: flex; flex-wrap: wrap; gap: var(--space-1); margin: var(--space-2) 0; }
+        .amenity-tag { display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; background: var(--gray-100); border-radius: var(--radius-md); font-size: 0.75rem; }
+        .venue-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); margin: var(--space-2) 0; }
+        .venue-info-item { text-align: center; padding: var(--space-2); background: var(--bg-secondary); border-radius: var(--radius-md); }
+        .calendar-section { background: var(--bg-primary); border-radius: var(--radius-lg); padding: var(--space-4); margin: var(--space-6) 0; box-shadow: var(--shadow-md); }
+        .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+        .calendar-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; transition: all var(--transition); }
+        .calendar-day.available { background: var(--success); color: white; }
+        .calendar-day.booked { background: var(--gray-300); color: var(--text-secondary); cursor: not-allowed; }
+        .calendar-day.selected { background: var(--primary); color: white; }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Campus<strong>Events</strong></span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="venue-booking.html" class="nav-link active">Venues</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+            </div>
+            <div class="nav-actions">
+                <button class="icon-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <div class="profile-dropdown">
+                    <button class="profile-btn">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=6C63FF&color=fff" alt="Profile">
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                        <hr>
+                        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Book a Venue</h1>
+            <p>Reserve the perfect space for your event</p>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-6) 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="venues-grid">
+                <div class="venue-card">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600" alt="Auditorium" class="venue-image">
+                    <div class="venue-content">
+                        <h3>Main Auditorium</h3>
+                        <p>Perfect for large events, conferences, and performances</p>
+                        <div class="venue-amenities">
+                            <span class="amenity-tag"><i class="fas fa-wifi"></i> WiFi</span>
+                            <span class="amenity-tag"><i class="fas fa-video"></i> Projector</span>
+                            <span class="amenity-tag"><i class="fas fa-microphone"></i> Audio System</span>
+                            <span class="amenity-tag"><i class="fas fa-snowflake"></i> AC</span>
+                        </div>
+                        <div class="venue-info-grid">
+                            <div class="venue-info-item">
+                                <i class="fas fa-users" style="color: var(--primary); font-size: 1.5rem;"></i>
+                                <p style="font-weight: 600; margin-top: 4px;">500</p>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Capacity</p>
+                            </div>
+                            <div class="venue-info-item">
+                                <i class="fas fa-tag" style="color: var(--accent); font-size: 1.5rem;"></i>
+                                <p style="font-weight: 600; margin-top: 4px;">₹5,000</p>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Per Day</p>
+                            </div>
+                            <div class="venue-info-item">
+                                <i class="fas fa-clock" style="color: var(--success); font-size: 1.5rem;"></i>
+                                <p style="font-weight: 600; margin-top: 4px;">8 Hours</p>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Duration</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="openModal('bookingModal')">Book Now</button>
+                    </div>
+                </div>
+
+                <div class="venue-card">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600" alt="Seminar Hall" class="venue-image">
+                    <div class="venue-content">
+                        <h3>Seminar Hall A</h3>
+                        <p>Ideal for workshops, seminars, and training sessions</p>
+                        <div class="venue-amenities">
+                            <span class="amenity-tag"><i class="fas fa-wifi"></i> WiFi</span>
+                            <span class="amenity-tag"><i class="fas fa-video"></i> Projector</span>
+                            <span class="amenity-tag"><i class="fas fa-chalkboard"></i> Whiteboard</span>
+                        </div>
+                        <div class="venue-info-grid">
+                            <div class="venue-info-item">
+                                <i class="fas fa-users" style="color: var(--primary); font-size: 1.5rem;"></i>
+                                <p style="font-weight: 600; margin-top: 4px;">100</p>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Capacity</p>
+                            </div>
+                            <div class="venue-info-item">
+                                <i class="fas fa-tag" style="color: var(--accent); font-size: 1.5rem;"></i>
+                                <p style="font-weight: 600; margin-top: 4px;">₹2,000</p>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Per Day</p>
+                            </div>
+                            <div class="venue-info-item">
+                                <i class="fas fa-clock" style="color: var(--success); font-size: 1.5rem;"></i>
+                                <p style="font-weight: 600; margin-top: 4px;">6 Hours</p>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Duration</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="openModal('bookingModal')">Book Now</button>
+                    </div>
+                </div>
+
+                <div class="venue-card">
+                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600" alt="Sports Complex" class="venue-image">
+                    <div class="venue-content">
+                        <h3>Sports Complex</h3>
+                        <p>Open ground for sports events and outdoor activities</p>
+                        <div class="venue-amenities">
+                            <span class="amenity-tag"><i class="fas fa-futbol"></i> Football Field</span>
+                            <span class="amenity-tag"><i class="fas fa-volleyball-ball"></i> Court</span>
+                            <span class="amenity-tag"><i class="fas fa-running"></i> Track</span>
+                        </div>
+                        <div class="venue-info-grid">
+                            <div class="venue-info-item">
+                                <i class="fas fa-users" style="color: var(--primary); font-size: 1.5rem;"></i>
+                                <p style="font-weight: 600; margin-top: 4px;">1000+</p>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Capacity</p>
+                            </div>
+                            <div class="venue-info-item">
+                                <i class="fas fa-tag" style="color: var(--accent); font-size: 1.5rem;"></i>
+                                <p style="font-weight: 600; margin-top: 4px;">₹3,000</p>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Per Day</p>
+                            </div>
+                            <div class="venue-info-item">
+                                <i class="fas fa-clock" style="color: var(--success); font-size: 1.5rem;"></i>
+                                <p style="font-weight: 600; margin-top: 4px;">Full Day</p>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Duration</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="openModal('bookingModal')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <h2>Availability Calendar</h2>
+                    <div>
+                        <button class="btn btn-outline"><i class="fas fa-chevron-left"></i></button>
+                        <span style="margin: 0 var(--space-2); font-weight: 600;">November 2024</span>
+                        <button class="btn btn-outline"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day" style="background: transparent; cursor: default;">S</div>
+                    <div class="calendar-day" style="background: transparent; cursor: default;">M</div>
+                    <div class="calendar-day" style="background: transparent; cursor: default;">T</div>
+                    <div class="calendar-day" style="background: transparent; cursor: default;">W</div>
+                    <div class="calendar-day" style="background: transparent; cursor: default;">T</div>
+                    <div class="calendar-day" style="background: transparent; cursor: default;">F</div>
+                    <div class="calendar-day" style="background: transparent; cursor: default;">S</div>
+                    <div class="calendar-day available">1</div>
+                    <div class="calendar-day available">2</div>
+                    <div class="calendar-day booked">3</div>
+                    <div class="calendar-day available">4</div>
+                    <div class="calendar-day available">5</div>
+                    <div class="calendar-day available">6</div>
+                    <div class="calendar-day available">7</div>
+                    <div class="calendar-day available">8</div>
+                    <div class="calendar-day available">9</div>
+                    <div class="calendar-day booked">10</div>
+                    <div class="calendar-day selected">11</div>
+                    <div class="calendar-day available">12</div>
+                    <div class="calendar-day available">13</div>
+                    <div class="calendar-day available">14</div>
+                </div>
+                <div style="display: flex; gap: var(--space-3); justify-content: center; margin-top: var(--space-3);">
+                    <span><span class="calendar-day available" style="width: 30px; height: 30px;"></span> Available</span>
+                    <span><span class="calendar-day booked" style="width: 30px; height: 30px;"></span> Booked</span>
+                    <span><span class="calendar-day selected" style="width: 30px; height: 30px;"></span> Selected</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('bookingModal')"><i class="fas fa-times"></i></button>
+            <h2>Book Venue</h2>
+            <form class="registration-form">
+                <div class="form-group">
+                    <label>Event Name *</label>
+                    <input type="text" required placeholder="Enter event name">
+                </div>
+                <div class="form-group">
+                    <label>Date *</label>
+                    <input type="date" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Start Time *</label>
+                        <input type="time" required>
+                    </div>
+                    <div class="form-group">
+                        <label>End Time *</label>
+                        <input type="time" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Expected Attendees *</label>
+                    <input type="number" required placeholder="Number of people">
+                </div>
+                <div class="form-group">
+                    <label>Additional Requirements</label>
+                    <textarea rows="3" placeholder="Special setup, catering, etc."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large btn-block">
+                    <i class="fas fa-check"></i> Confirm Booking
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Booking request submitted!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

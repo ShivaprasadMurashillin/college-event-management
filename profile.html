@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - CampusEvents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Campus<strong>Events</strong></span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="venue-booking.html" class="nav-link">Venues</a>
+                <a href="profile.html" class="nav-link active">Profile</a>
+            </div>
+            <div class="nav-actions">
+                <button class="icon-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <div class="profile-dropdown">
+                    <button class="profile-btn">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=6C63FF&color=fff" alt="Profile">
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                        <hr>
+                        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="container">
+            <div class="profile-layout">
+                <div class="profile-main">
+                    <div class="profile-header">
+                        <div class="profile-avatar-section">
+                            <div class="profile-avatar">
+                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=6C63FF&color=fff&size=200" alt="Profile" id="profileImage">
+                                <label for="avatarUpload" class="avatar-upload-btn">
+                                    <i class="fas fa-camera"></i>
+                                    <input type="file" id="avatarUpload" accept="image/*" hidden>
+                                </label>
+                            </div>
+                            <h1>John Doe</h1>
+                            <p>Computer Science Engineering</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-tabs">
+                        <button class="profile-tab active" data-tab="personal">Personal Info</button>
+                        <button class="profile-tab" data-tab="interests">Interests</button>
+                        <button class="profile-tab" data-tab="achievements">Achievements</button>
+                        <button class="profile-tab" data-tab="settings">Settings</button>
+                    </div>
+
+                    <div class="tab-content active" id="personal">
+                        <div class="profile-card">
+                            <h2>Personal Information</h2>
+                            <form class="profile-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" value="John" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" value="Doe" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" value="john.doe@college.edu" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" value="+91 98765 43210" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Department</label>
+                                        <select>
+                                            <option selected>Computer Science</option>
+                                            <option>Information Technology</option>
+                                            <option>Electronics & Communication</option>
+                                            <option>Mechanical Engineering</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Year of Study</label>
+                                        <select>
+                                            <option>1st Year</option>
+                                            <option>2nd Year</option>
+                                            <option selected>3rd Year</option>
+                                            <option>4th Year</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Bio</label>
+                                    <textarea rows="4" placeholder="Tell us about yourself...">Passionate about technology and innovation. Love participating in hackathons and tech events!</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="interests">
+                        <div class="profile-card">
+                            <h2>My Interests</h2>
+                            <p>Select topics you're interested in to get personalized event recommendations</p>
+                            <div class="interests-grid">
+                                <label class="interest-pill active">
+                                    <input type="checkbox" checked>
+                                    <span><i class="fas fa-code"></i> Programming</span>
+                                </label>
+                                <label class="interest-pill active">
+                                    <input type="checkbox" checked>
+                                    <span><i class="fas fa-robot"></i> Artificial Intelligence</span>
+                                </label>
+                                <label class="interest-pill">
+                                    <input type="checkbox">
+                                    <span><i class="fas fa-palette"></i> Design</span>
+                                </label>
+                                <label class="interest-pill active">
+                                    <input type="checkbox" checked>
+                                    <span><i class="fas fa-mobile-alt"></i> Mobile Development</span>
+                                </label>
+                                <label class="interest-pill">
+                                    <input type="checkbox">
+                                    <span><i class="fas fa-music"></i> Music</span>
+                                </label>
+                                <label class="interest-pill">
+                                    <input type="checkbox">
+                                    <span><i class="fas fa-running"></i> Sports</span>
+                                </label>
+                                <label class="interest-pill active">
+                                    <input type="checkbox" checked>
+                                    <span><i class="fas fa-cloud"></i> Cloud Computing</span>
+                                </label>
+                                <label class="interest-pill">
+                                    <input type="checkbox">
+                                    <span><i class="fas fa-camera"></i> Photography</span>
+                                </label>
+                            </div>
+                            <button class="btn btn-primary">Update Interests</button>
+                        </div>
+
+                        <div class="profile-card">
+                            <h2>Volunteer Preferences</h2>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>I'm interested in volunteering for events</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Preferred Volunteer Roles</label>
+                                <div class="volunteer-roles">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox">
+                                        <span>Event Coordinator</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" checked>
+                                        <span>Technical Support</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox">
+                                        <span>Registration Desk</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox">
+                                        <span>Hospitality</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="achievements">
+                        <div class="profile-card">
+                            <h2>Achievement Badges</h2>
+                            <div class="badges-grid">
+                                <div class="badge-item unlocked">
+                                    <i class="fas fa-trophy"></i>
+                                    <h4>Event Master</h4>
+                                    <p>Attended 20+ events</p>
+                                </div>
+                                <div class="badge-item unlocked">
+                                    <i class="fas fa-code"></i>
+                                    <h4>Tech Enthusiast</h4>
+                                    <p>Participated in 5 hackathons</p>
+                                </div>
+                                <div class="badge-item locked">
+                                    <i class="fas fa-star"></i>
+                                    <h4>Rising Star</h4>
+                                    <p>Win 3 competitions</p>
+                                </div>
+                                <div class="badge-item unlocked">
+                                    <i class="fas fa-certificate"></i>
+                                    <h4>Certificate Collector</h4>
+                                    <p>Earned 15+ certificates</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <h2>Linked Social Profiles</h2>
+                            <div class="social-links-list">
+                                <div class="social-link-item">
+                                    <i class="fab fa-linkedin"></i>
+                                    <span>LinkedIn</span>
+                                    <button class="btn btn-sm btn-outline">Connect</button>
+                                </div>
+                                <div class="social-link-item connected">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub - john-doe</span>
+                                    <button class="btn btn-sm btn-outline">Disconnect</button>
+                                </div>
+                                <div class="social-link-item">
+                                    <i class="fab fa-twitter"></i>
+                                    <span>Twitter</span>
+                                    <button class="btn btn-sm btn-outline">Connect</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="settings">
+                        <div class="profile-card">
+                            <h2>Account Settings</h2>
+                            <div class="settings-section">
+                                <h3>Notifications</h3>
+                                <div class="settings-group">
+                                    <label class="switch-label">
+                                        <span>Email Notifications</span>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </label>
+                                    <label class="switch-label">
+                                        <span>Event Reminders</span>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </label>
+                                    <label class="switch-label">
+                                        <span>Newsletter</span>
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-section">
+                                <h3>Privacy</h3>
+                                <div class="settings-group">
+                                    <label class="switch-label">
+                                        <span>Show my profile to others</span>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </label>
+                                    <label class="switch-label">
+                                        <span>Allow event organizers to contact me</span>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-section">
+                                <h3>Change Password</h3>
+                                <form class="password-form">
+                                    <div class="form-group">
+                                        <label>Current Password</label>
+                                        <input type="password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>New Password</label>
+                                        <input type="password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Confirm New Password</label>
+                                        <input type="password" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Update Password</button>
+                                </form>
+                            </div>
+
+                            <div class="settings-section danger-zone">
+                                <h3>Danger Zone</h3>
+                                <button class="btn btn-outline" style="border-color: var(--error); color: var(--error);">
+                                    <i class="fas fa-trash"></i> Delete Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="profile-sidebar">
+                    <div class="sidebar-card">
+                        <h3>Quick Stats</h3>
+                        <div class="quick-stats">
+                            <div class="quick-stat">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>24 Events</span>
+                            </div>
+                            <div class="quick-stat">
+                                <i class="fas fa-certificate"></i>
+                                <span>18 Certificates</span>
+                            </div>
+                            <div class="quick-stat">
+                                <i class="fas fa-trophy"></i>
+                                <span>5 Achievements</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>Profile Completeness</h3>
+                        <div class="progress-circle">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="var(--gray-200)" stroke-width="10"/>
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="var(--primary)" stroke-width="10" 
+                                        stroke-dasharray="314" stroke-dashoffset="62.8" stroke-linecap="round"/>
+                            </svg>
+                            <div class="progress-text">80%</div>
+                        </div>
+                        <p class="progress-note">Complete your profile to get better recommendations!</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Profile updated successfully!</span>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Tab switching
+        document.querySelectorAll('.profile-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                this.classList.add('active');
+                document.getElementById(this.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Interest pills
+        document.querySelectorAll('.interest-pill').forEach(pill => {
+            pill.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+
+        // Avatar upload
+        document.getElementById('avatarUpload').addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImage').src = e.target.result;
+                    showToast('Profile picture updated!');
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+    </script>
+</body>
+</html>

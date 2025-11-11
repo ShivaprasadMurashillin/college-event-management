@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - CampusEvents</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="event-details.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Campus<strong>Events</strong></span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link active">Events</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="venue-booking.html" class="nav-link">Venues</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="icon-btn" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn" id="notificationBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <button class="icon-btn" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="profile-dropdown">
+                    <button class="profile-btn">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=6C63FF&color=fff" alt="Profile">
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                        <a href="organizer-dashboard.html"><i class="fas fa-cog"></i> Organizer Panel</a>
+                        <hr>
+                        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Event Banner -->
+    <section class="event-banner">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600" alt="TechFest 2024">
+        <div class="banner-overlay">
+            <div class="container">
+                <div class="banner-content">
+                    <span class="event-category tech"><i class="fas fa-microchip"></i> Technical Event</span>
+                    <h1 class="event-title">TechFest 2024: Innovation Summit</h1>
+                    <div class="event-quick-info">
+                        <span><i class="fas fa-calendar-alt"></i> December 15, 2024</span>
+                        <span><i class="fas fa-clock"></i> 9:00 AM - 6:00 PM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Main Auditorium</span>
+                        <span><i class="fas fa-users"></i> 1,234 Registered</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Main -->
+    <section class="event-details-main">
+        <div class="container">
+            <div class="details-layout">
+                <!-- Main Content -->
+                <div class="details-content">
+                    <!-- Tabs -->
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="overview">Overview</button>
+                        <button class="tab-btn" data-tab="schedule">Schedule</button>
+                        <button class="tab-btn" data-tab="speakers">Speakers</button>
+                        <button class="tab-btn" data-tab="gallery">Gallery</button>
+                        <button class="tab-btn" data-tab="faqs">FAQs</button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="tab-contents">
+                        <!-- Overview Tab -->
+                        <div class="tab-content active" id="overview">
+                            <div class="content-section">
+                                <h2>About This Event</h2>
+                                <p>TechFest 2024 is the premier technology festival bringing together students, professionals, and innovators for a day of learning, competition, and networking. This year's theme focuses on "Innovation for Tomorrow" with cutting-edge workshops, hackathons, and tech talks from industry leaders.</p>
+                                <p>Join us for an exciting day filled with hands-on workshops, competitive programming challenges, and inspiring keynote sessions. Whether you're a beginner or an experienced developer, there's something for everyone at TechFest 2024.</p>
+                            </div>
+
+                            <div class="content-section">
+                                <h2>Key Highlights</h2>
+                                <div class="highlights-grid">
+                                    <div class="highlight-card">
+                                        <i class="fas fa-trophy"></i>
+                                        <h3>Prizes Worth ₹5 Lakhs</h3>
+                                        <p>Win exciting cash prizes and goodies</p>
+                                    </div>
+                                    <div class="highlight-card">
+                                        <i class="fas fa-certificate"></i>
+                                        <h3>Certificates</h3>
+                                        <p>Get participation & winner certificates</p>
+                                    </div>
+                                    <div class="highlight-card">
+                                        <i class="fas fa-users"></i>
+                                        <h3>Networking</h3>
+                                        <p>Meet industry experts and peers</p>
+                                    </div>
+                                    <div class="highlight-card">
+                                        <i class="fas fa-briefcase"></i>
+                                        <h3>Job Opportunities</h3>
+                                        <p>Connect with recruiting companies</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-section">
+                                <h2>Event Details</h2>
+                                <div class="details-list">
+                                    <div class="detail-item">
+                                        <strong>Organized By:</strong>
+                                        <span>Computer Science Department</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Department:</strong>
+                                        <span>CSE, IT, ECE</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Duration:</strong>
+                                        <span>Full Day (9 Hours)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Language:</strong>
+                                        <span>English</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Level:</strong>
+                                        <span>All Levels Welcome</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Contact:</strong>
+                                        <span>techfest@college.edu | +91 98765 43210</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-section">
+                                <h2>What to Bring</h2>
+                                <ul class="checklist">
+                                    <li><i class="fas fa-check-circle"></i> Valid College ID Card</li>
+                                    <li><i class="fas fa-check-circle"></i> Laptop for workshops & hackathon</li>
+                                    <li><i class="fas fa-check-circle"></i> Charger and necessary cables</li>
+                                    <li><i class="fas fa-check-circle"></i> Notebook and pen</li>
+                                    <li><i class="fas fa-check-circle"></i> Water bottle (refreshments provided)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Schedule Tab -->
+                        <div class="tab-content" id="schedule">
+                            <div class="content-section">
+                                <h2>Event Schedule</h2>
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-time">9:00 AM</div>
+                                        <div class="timeline-content">
+                                            <h3>Registration & Breakfast</h3>
+                                            <p>Check-in, collect your badges, and network over breakfast</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-time">10:00 AM</div>
+                                        <div class="timeline-content">
+                                            <h3>Opening Ceremony</h3>
+                                            <p>Welcome address and introduction to the event</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-time">11:00 AM</div>
+                                        <div class="timeline-content">
+                                            <h3>Keynote Session</h3>
+                                            <p>"Future of Technology" by Dr. Rajesh Kumar, CTO at TechCorp</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-time">12:30 PM</div>
+                                        <div class="timeline-content">
+                                            <h3>Hackathon Kickoff</h3>
+                                            <p>Problem statements revealed, teams start coding</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-time">1:00 PM</div>
+                                        <div class="timeline-content">
+                                            <h3>Lunch Break</h3>
+                                            <p>Complimentary lunch for all participants</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-time">2:00 PM</div>
+                                        <div class="timeline-content">
+                                            <h3>Parallel Workshops</h3>
+                                            <p>Choose from: Web Dev, Mobile Apps, AI/ML, Cloud Computing</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-time">4:00 PM</div>
+                                        <div class="timeline-content">
+                                            <h3>Project Presentations</h3>
+                                            <p>Hackathon teams present their solutions</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-time">5:30 PM</div>
+                                        <div class="timeline-content">
+                                            <h3>Awards & Closing Ceremony</h3>
+                                            <p>Winner announcements and certificate distribution</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Speakers Tab -->
+                        <div class="tab-content" id="speakers">
+                            <div class="content-section">
+                                <h2>Featured Speakers</h2>
+                                <div class="speakers-grid">
+                                    <div class="speaker-card">
+                                        <img src="https://ui-avatars.com/api/?name=Rajesh+Kumar&background=6C63FF&color=fff&size=200" alt="Dr. Rajesh Kumar">
+                                        <h3>Dr. Rajesh Kumar</h3>
+                                        <p class="speaker-title">CTO, TechCorp India</p>
+                                        <p class="speaker-bio">15+ years in software architecture and cloud computing</p>
+                                        <div class="speaker-social">
+                                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="speaker-card">
+                                        <img src="https://ui-avatars.com/api/?name=Priya+Sharma&background=FF6B6B&color=fff&size=200" alt="Priya Sharma">
+                                        <h3>Priya Sharma</h3>
+                                        <p class="speaker-title">AI Research Lead, Google</p>
+                                        <p class="speaker-bio">Expert in Machine Learning and Natural Language Processing</p>
+                                        <div class="speaker-social">
+                                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="speaker-card">
+                                        <img src="https://ui-avatars.com/api/?name=Amit+Patel&background=4CAF50&color=fff&size=200" alt="Amit Patel">
+                                        <h3>Amit Patel</h3>
+                                        <p class="speaker-title">Founder, StartupXYZ</p>
+                                        <p class="speaker-bio">Serial entrepreneur and startup mentor</p>
+                                        <div class="speaker-social">
+                                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gallery Tab -->
+                        <div class="tab-content" id="gallery">
+                            <div class="content-section">
+                                <h2>Event Gallery</h2>
+                                <p class="gallery-note">Photos from previous TechFest events</p>
+                                <div class="gallery-grid">
+                                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop" alt="TechFest">
+                                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=300&fit=crop" alt="Tech Event">
+                                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop" alt="Workshop">
+                                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop" alt="Participants">
+                                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&h=300&fit=crop" alt="Team">
+                                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop" alt="Collaboration">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQs Tab -->
+                        <div class="tab-content" id="faqs">
+                            <div class="content-section">
+                                <h2>Frequently Asked Questions</h2>
+                                <div class="faq-list">
+                                    <div class="faq-item">
+                                        <button class="faq-question">
+                                            <span>Who can participate in TechFest 2024?</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="faq-answer">
+                                            <p>TechFest 2024 is open to all college students from any department. Whether you're from CSE, ECE, Mechanical, or any other branch, you're welcome to participate!</p>
+                                        </div>
+                                    </div>
+                                    <div class="faq-item">
+                                        <button class="faq-question">
+                                            <span>Is registration mandatory?</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="faq-answer">
+                                            <p>Yes, prior registration is required to attend the event. Register online to secure your spot and receive event updates.</p>
+                                        </div>
+                                    </div>
+                                    <div class="faq-item">
+                                        <button class="faq-question">
+                                            <span>What is the registration fee?</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="faq-answer">
+                                            <p>TechFest 2024 is completely FREE for all registered participants! Just register and show up.</p>
+                                        </div>
+                                    </div>
+                                    <div class="faq-item">
+                                        <button class="faq-question">
+                                            <span>Do I need to bring my own laptop?</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="faq-answer">
+                                            <p>Yes, if you're participating in workshops or hackathons, please bring your own laptop with necessary software installed.</p>
+                                        </div>
+                                    </div>
+                                    <div class="faq-item">
+                                        <button class="faq-question">
+                                            <span>Will lunch be provided?</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="faq-answer">
+                                            <p>Yes! Complimentary lunch and refreshments will be provided to all registered participants.</p>
+                                        </div>
+                                    </div>
+                                    <div class="faq-item">
+                                        <button class="faq-question">
+                                            <span>Will I receive a certificate?</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="faq-answer">
+                                            <p>Yes, all participants will receive a digital participation certificate. Winners will receive special achievement certificates.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="details-sidebar">
+                    <!-- Registration Card -->
+                    <div class="sidebar-card registration-card">
+                        <div class="price-tag">
+                            <span class="price">FREE</span>
+                            <span class="original-price">₹500</span>
+                        </div>
+                        <div class="countdown" id="countdown"></div>
+                        <button class="btn btn-primary btn-large btn-block" onclick="openModal('registrationModal')">
+                            <i class="fas fa-ticket-alt"></i> Register Now
+                        </button>
+                        <p class="seats-left"><i class="fas fa-fire"></i> Only 266 spots left!</p>
+                        
+                        <div class="registration-info">
+                            <div class="info-row">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <strong>1,234</strong>
+                                    <span>Already Registered</span>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-calendar-check"></i>
+                                <div>
+                                    <strong>Dec 10, 2024</strong>
+                                    <span>Registration Deadline</span>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-certificate"></i>
+                                <div>
+                                    <strong>Certificate</strong>
+                                    <span>Upon Completion</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Share Card -->
+                    <div class="sidebar-card">
+                        <h3>Share This Event</h3>
+                        <div class="share-buttons">
+                            <button class="share-btn facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="share-btn twitter"><i class="fab fa-twitter"></i></button>
+                            <button class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></button>
+                            <button class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></button>
+                            <button class="share-btn copy"><i class="fas fa-link"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- QR Code Card -->
+                    <div class="sidebar-card">
+                        <h3>Quick Registration</h3>
+                        <div class="qr-code">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://campusevents.com/techfest2024" alt="QR Code">
+                            <p>Scan to register instantly</p>
+                        </div>
+                    </div>
+
+                    <!-- Organizer Card -->
+                    <div class="sidebar-card">
+                        <h3>Organizer</h3>
+                        <div class="organizer-info">
+                            <img src="https://ui-avatars.com/api/?name=CSE+Dept&background=6C63FF&color=fff&size=60" alt="Organizer">
+                            <div>
+                                <h4>Computer Science Dept</h4>
+                                <p>Official Tech Club</p>
+                                <a href="#" class="contact-link">
+                                    <i class="fas fa-envelope"></i> Contact Organizer
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Similar Events -->
+            <div class="similar-events">
+                <h2>Similar Events You Might Like</h2>
+                <div class="similar-events-grid">
+                    <div class="event-card-small">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400" alt="Event">
+                        <div class="card-content">
+                            <span class="event-category workshop"><i class="fas fa-code"></i> Workshop</span>
+                            <h3>Web Development Bootcamp</h3>
+                            <p><i class="far fa-calendar"></i> Nov 22, 2024</p>
+                            <a href="event-details.html" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="event-card-small">
+                        <img src="https://images.unsplash.com/photo-1558403194-611308249627?w=400" alt="Event">
+                        <div class="card-content">
+                            <span class="event-category tech"><i class="fas fa-robot"></i> Technical</span>
+                            <h3>AI & ML Conference</h3>
+                            <p><i class="far fa-calendar"></i> Dec 1, 2024</p>
+                            <a href="event-details.html" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="event-card-small">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400" alt="Event">
+                        <div class="card-content">
+                            <span class="event-category hackathon"><i class="fas fa-laptop-code"></i> Hackathon</span>
+                            <h3>Code Sprint 2024</h3>
+                            <p><i class="far fa-calendar"></i> Dec 10, 2024</p>
+                            <a href="event-details.html" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Modal -->
+    <div class="modal" id="registrationModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('registrationModal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Register for TechFest 2024</h2>
+            <form class="registration-form" id="eventRegistrationForm">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" required placeholder="+91 98765 43210">
+                </div>
+                <div class="form-group">
+                    <label>Department *</label>
+                    <select required>
+                        <option value="">Select Department</option>
+                        <option>Computer Science</option>
+                        <option>Information Technology</option>
+                        <option>Electronics & Communication</option>
+                        <option>Mechanical Engineering</option>
+                        <option>Civil Engineering</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Year of Study *</label>
+                    <select required>
+                        <option value="">Select Year</option>
+                        <option>1st Year</option>
+                        <option>2nd Year</option>
+                        <option>3rd Year</option>
+                        <option>4th Year</option>
+                    </select>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" required>
+                        <span>I agree to the terms and conditions</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large btn-block">
+                    <i class="fas fa-check"></i> Complete Registration
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Campus<strong>Events</strong></span>
+                    </div>
+                    <p>Your ultimate platform for discovering and participating in college events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="events.html">Browse Events</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="venue-booking.html">Book Venue</a></li>
+                        <li><a href="organizer-dashboard.html">Organize Event</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="events.html?category=technical">Technical</a></li>
+                        <li><a href="events.html?category=cultural">Cultural</a></li>
+                        <li><a href="events.html?category=sports">Sports</a></li>
+                        <li><a href="events.html?category=workshop">Workshops</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 CampusEvents. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart"></i> for students</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Registration successful!</span>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize countdown
+        startCountdown('December 15, 2024 09:00:00', 'countdown');
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked FAQ if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('eventRegistrationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            closeModal('registrationModal');
+            showToast('Registration successful! Check your email for confirmation.');
+        });
+
+        // Share buttons
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                showToast('Share link copied to clipboard!');
+            });
+        });
+    </script>
+</body>
+</html>

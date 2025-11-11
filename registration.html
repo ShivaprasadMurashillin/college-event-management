@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - CampusEvents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .registration-container {
+            min-height: 100vh;
+            background: var(--bg-secondary);
+            padding: var(--space-6) 0;
+        }
+        .registration-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-primary);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+        .registration-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: var(--space-4);
+            text-align: center;
+        }
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            margin: var(--space-4) 0;
+            position: relative;
+        }
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--border-color);
+            z-index: 0;
+        }
+        .progress-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 8px;
+            background: var(--bg-primary);
+            border: 3px solid var(--border-color);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            transition: all var(--transition);
+        }
+        .progress-step.active .step-circle,
+        .progress-step.completed .step-circle {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        .step-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        .registration-form {
+            padding: var(--space-4);
+        }
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-4);
+            padding-top: var(--space-4);
+            border-top: 1px solid var(--border-color);
+        }
+        .success-animation {
+            text-align: center;
+            padding: var(--space-8) var(--space-4);
+        }
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto var(--space-3);
+            background: linear-gradient(135deg, var(--success), #66BB6A);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            animation: scaleIn 0.5s ease-out;
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <div class="container">
+            <div class="registration-wrapper">
+                <div class="registration-header">
+                    <h1>Complete Your Registration</h1>
+                    <p>Join CampusEvents and start your journey</p>
+                </div>
+
+                <div class="progress-bar" style="padding: 0 var(--space-4);">
+                    <div class="progress-step active">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Personal Info</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Preferences</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Event Selection</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Payment</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-circle">5</div>
+                        <div class="step-label">Confirmation</div>
+                    </div>
+                </div>
+
+                <form class="registration-form" id="multiStepForm">
+                    <!-- Step 1: Personal Info -->
+                    <div class="form-section active" data-step="1">
+                        <h2>Personal Information</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name *</label>
+                                <input type="text" required placeholder="John">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name *</label>
+                                <input type="text" required placeholder="Doe">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" required placeholder="john.doe@college.edu">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone *</label>
+                            <input type="tel" required placeholder="+91 98765 43210">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Department *</label>
+                                <select required>
+                                    <option value="">Select Department</option>
+                                    <option>Computer Science</option>
+                                    <option>Information Technology</option>
+                                    <option>Electronics</option>
+                                    <option>Mechanical</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Year *</label>
+                                <select required>
+                                    <option value="">Select Year</option>
+                                    <option>1st Year</option>
+                                    <option>2nd Year</option>
+                                    <option>3rd Year</option>
+                                    <option>4th Year</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Preferences -->
+                    <div class="form-section" data-step="2">
+                        <h2>Your Preferences</h2>
+                        <div class="form-group">
+                            <label>Select Your Interests</label>
+                            <div class="interests-grid">
+                                <label class="interest-pill"><input type="checkbox"><span><i class="fas fa-code"></i> Programming</span></label>
+                                <label class="interest-pill"><input type="checkbox"><span><i class="fas fa-robot"></i> AI/ML</span></label>
+                                <label class="interest-pill"><input type="checkbox"><span><i class="fas fa-palette"></i> Design</span></label>
+                                <label class="interest-pill"><input type="checkbox"><span><i class="fas fa-music"></i> Music</span></label>
+                                <label class="interest-pill"><input type="checkbox"><span><i class="fas fa-running"></i> Sports</span></label>
+                                <label class="interest-pill"><input type="checkbox"><span><i class="fas fa-camera"></i> Photography</span></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>T-Shirt Size</label>
+                            <select>
+                                <option>S</option>
+                                <option>M</option>
+                                <option selected>L</option>
+                                <option>XL</option>
+                                <option>XXL</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Dietary Preferences</label>
+                            <select>
+                                <option>No Restrictions</option>
+                                <option>Vegetarian</option>
+                                <option>Vegan</option>
+                                <option>Halal</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Event Selection -->
+                    <div class="form-section" data-step="3">
+                        <h2>Select Events</h2>
+                        <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+                            <label class="checkbox-label" style="padding: var(--space-2); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                                <input type="checkbox" checked>
+                                <span><strong>TechFest 2024</strong> - Dec 15 (Free)</span>
+                            </label>
+                            <label class="checkbox-label" style="padding: var(--space-2); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                                <input type="checkbox">
+                                <span><strong>AI Workshop</strong> - Nov 25 (₹200)</span>
+                            </label>
+                            <label class="checkbox-label" style="padding: var(--space-2); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                                <input type="checkbox">
+                                <span><strong>Cultural Night</strong> - Nov 20 (₹50)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Payment -->
+                    <div class="form-section" data-step="4">
+                        <h2>Payment Details</h2>
+                        <div class="form-group">
+                            <label>Total Amount: ₹0 (Free Events)</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Payment Method</label>
+                            <select>
+                                <option>Credit/Debit Card</option>
+                                <option>UPI</option>
+                                <option>Net Banking</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Card Number</label>
+                            <input type="text" placeholder="1234 5678 9012 3456">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Expiry Date</label>
+                                <input type="text" placeholder="MM/YY">
+                            </div>
+                            <div class="form-group">
+                                <label>CVV</label>
+                                <input type="text" placeholder="123">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Confirmation -->
+                    <div class="form-section" data-step="5">
+                        <h2>Review & Confirm</h2>
+                        <div style="background: var(--bg-secondary); padding: var(--space-3); border-radius: var(--radius-md); margin-bottom: var(--space-3);">
+                            <p><strong>Name:</strong> John Doe</p>
+                            <p><strong>Email:</strong> john.doe@college.edu</p>
+                            <p><strong>Department:</strong> Computer Science</p>
+                            <p><strong>Events:</strong> TechFest 2024</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" required>
+                                <span>I agree to the <a href="#" class="link-primary">Terms & Conditions</a></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-outline" id="prevBtn" style="display:none;">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextBtn">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function updateStep() {
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+
+            document.querySelectorAll('.progress-step').forEach((step, index) => {
+                if (index < currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (index === currentStep - 1) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+
+            document.getElementById('prevBtn').style.display = currentStep === 1 ? 'none' : 'flex';
+            document.getElementById('nextBtn').textContent = currentStep === totalSteps ? 'Submit' : 'Next ';
+            if (currentStep < totalSteps) {
+                document.getElementById('nextBtn').innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
+            } else {
+                document.getElementById('nextBtn').innerHTML = '<i class="fas fa-check"></i> Submit';
+            }
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateStep();
+            } else {
+                // Submit form
+                document.querySelector('.registration-wrapper').innerHTML = `
+                    <div class="success-animation">
+                        <div class="success-icon"><i class="fas fa-check"></i></div>
+                        <h2>Registration Successful!</h2>
+                        <p>Check your email for confirmation and event details.</p>
+                        <a href="dashboard.html" class="btn btn-primary btn-large" style="margin-top: var(--space-3);">
+                            Go to Dashboard
+                        </a>
+                    </div>
+                `;
+            }
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStep();
+            }
+        });
+
+        updateStep();
+    </script>
+</body>
+</html>

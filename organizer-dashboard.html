@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizer Dashboard - CampusEvents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Campus<strong>Events</strong></span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="organizer-dashboard.html" class="nav-link active">Organizer Panel</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+            </div>
+            <div class="nav-actions">
+                <button class="icon-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <div class="profile-dropdown">
+                    <button class="profile-btn">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=6C63FF&color=fff" alt="Profile">
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                        <hr>
+                        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-profile">
+                <h3>Organizer Panel</h3>
+                <p>Event Management</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#overview" class="sidebar-link active"><i class="fas fa-chart-pie"></i> Overview</a>
+                <a href="#create" class="sidebar-link"><i class="fas fa-plus-circle"></i> Create Event</a>
+                <a href="#manage" class="sidebar-link"><i class="fas fa-tasks"></i> Manage Events</a>
+                <a href="#attendees" class="sidebar-link"><i class="fas fa-users"></i> Attendees</a>
+                <a href="#analytics" class="sidebar-link"><i class="fas fa-chart-bar"></i> Analytics</a>
+                <a href="#certificates" class="sidebar-link"><i class="fas fa-certificate"></i> Certificates</a>
+                <a href="#notifications" class="sidebar-link"><i class="fas fa-bell"></i> Announcements</a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <div>
+                    <h1>Organizer Dashboard</h1>
+                    <p>Manage your events and track performance</p>
+                </div>
+                <button class="btn btn-primary"><i class="fas fa-plus"></i> Create New Event</button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon purple"><i class="fas fa-calendar"></i></div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Total Events</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="fas fa-users"></i></div>
+                    <div class="stat-info">
+                        <h3>3,456</h3>
+                        <p>Total Registrations</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-info">
+                        <h3>2,890</h3>
+                        <p>Attended</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="fas fa-rupee-sign"></i></div>
+                    <div class="stat-info">
+                        <h3>₹45K</h3>
+                        <p>Revenue</p>
+                    </div>
+                </div>
+            </div>
+
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tasks"></i> Manage Events</h2>
+                    <button class="btn btn-primary"><i class="fas fa-plus"></i> New Event</button>
+                </div>
+                <div class="history-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Date</th>
+                                <th>Registrations</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>TechFest 2024</td>
+                                <td>Dec 15, 2024</td>
+                                <td>1,234</td>
+                                <td><span class="status-badge upcoming">Upcoming</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-chart-line"></i></button>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cultural Night</td>
+                                <td>Nov 20, 2024</td>
+                                <td>856</td>
+                                <td><span class="status-badge upcoming">Upcoming</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-chart-line"></i></button>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hackathon 2024</td>
+                                <td>Sep 28, 2024</td>
+                                <td>234</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-outline"><i class="fas fa-certificate"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-bar"></i> Registration Trends</h2>
+                </div>
+                <div class="analytics-placeholder">
+                    <canvas id="trendChart" width="800" height="300"></canvas>
+                    <p class="chart-note">Event registration trends over the last 6 months</p>
+                </div>
+            </section>
+
+            <div class="dashboard-grid">
+                <section class="dashboard-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-users"></i> Recent Attendees</h2>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                        <div style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                            <img src="https://ui-avatars.com/api/?name=Priya+Sharma&background=6C63FF&color=fff" alt="" style="width: 40px; height: 40px; border-radius: var(--radius-full);">
+                            <div style="flex: 1;">
+                                <h4 style="font-size: 0.9rem;">Priya Sharma</h4>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">TechFest 2024</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                            <img src="https://ui-avatars.com/api/?name=Rahul+Verma&background=FF6B6B&color=fff" alt="" style="width: 40px; height: 40px; border-radius: var(--radius-full);">
+                            <div style="flex: 1;">
+                                <h4 style="font-size: 0.9rem;">Rahul Verma</h4>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Cultural Night</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="dashboard-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-bell"></i> Send Announcement</h2>
+                    </div>
+                    <form style="display: flex; flex-direction: column; gap: var(--space-2);">
+                        <div class="form-group">
+                            <label>Event</label>
+                            <select class="form-control">
+                                <option>TechFest 2024</option>
+                                <option>Cultural Night</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea rows="3" placeholder="Type your announcement..." style="width: 100%; padding: 12px; border: 2px solid var(--border-color); border-radius: var(--radius-md); font-family: var(--font-body);"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send</button>
+                    </form>
+                </section>
+            </div>
+
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-certificate"></i> Generate Certificates</h2>
+                </div>
+                <div style="display: flex; gap: var(--space-2); align-items: end;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Select Event</label>
+                        <select class="form-control">
+                            <option>Hackathon 2024</option>
+                            <option>Web Dev Workshop</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary"><i class="fas fa-download"></i> Generate All</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Action completed successfully!</span>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const ctx = document.getElementById('trendChart');
+        if (ctx) {
+            const context = ctx.getContext('2d');
+            context.strokeStyle = '#6C63FF';
+            context.lineWidth = 3;
+            context.beginPath();
+            context.moveTo(50, 200);
+            context.lineTo(150, 180);
+            context.lineTo(250, 150);
+            context.lineTo(350, 120);
+            context.lineTo(450, 100);
+            context.lineTo(550, 80);
+            context.stroke();
+        }
+    </script>
+</body>
+</html>

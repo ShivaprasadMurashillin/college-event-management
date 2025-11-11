@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Events - Discover. Register. Participate. Excel.</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Campus<strong>Events</strong></span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="venue-booking.html" class="nav-link">Venues</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="icon-btn" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn" id="notificationBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <button class="icon-btn" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="profile-dropdown">
+                    <button class="profile-btn">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=6C63FF&color=fff" alt="Profile">
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                        <a href="organizer-dashboard.html"><i class="fas fa-cog"></i> Organizer Panel</a>
+                        <hr>
+                        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-gradient"></div>
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Discover. Register. <br>
+                    <span class="gradient-text">Participate. Excel.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Your gateway to exciting campus events, workshops, and competitions. 
+                    Connect, learn, and grow with your college community.
+                </p>
+                <div class="hero-buttons">
+                    <a href="events.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-calendar-alt"></i> Browse Events
+                    </a>
+                    <a href="registration.html" class="btn btn-outline btn-large">
+                        <i class="fas fa-rocket"></i> Get Started
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <div class="stat-info">
+                            <div class="stat-number" data-target="1500">0</div>
+                            <div class="stat-label">Events Hosted</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-info">
+                            <div class="stat-number" data-target="25000">0</div>
+                            <div class="stat-label">Students Participated</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-university"></i>
+                        <div class="stat-info">
+                            <div class="stat-number" data-target="50">0</div>
+                            <div class="stat-label">Colleges Connected</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card card-1">
+                    <i class="fas fa-trophy"></i>
+                    <span>Win Prizes</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-certificate"></i>
+                    <span>Get Certified</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-users"></i>
+                    <span>Network</span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800" alt="Students" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events Carousel -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Events</h2>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="event-carousel" id="eventCarousel">
+                    <div class="event-card featured">
+                        <div class="event-badge">Featured</div>
+                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600" alt="TechFest 2024" class="event-image">
+                        <div class="event-content">
+                            <div class="event-meta">
+                                <span class="event-category tech"><i class="fas fa-microchip"></i> Technical</span>
+                                <span class="event-date"><i class="far fa-calendar"></i> Dec 15, 2024</span>
+                            </div>
+                            <h3 class="event-title">TechFest 2024: Innovation Summit</h3>
+                            <p class="event-description">Annual technology festival featuring hackathons, tech talks, and innovation challenges.</p>
+                            <div class="event-info">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Main Auditorium</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>1,234 Registered</span>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <div class="event-price">Free</div>
+                                <a href="event-details.html" class="btn btn-primary">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card featured">
+                        <div class="event-badge">Hot</div>
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600" alt="Cultural Night" class="event-image">
+                        <div class="event-content">
+                            <div class="event-meta">
+                                <span class="event-category cultural"><i class="fas fa-masks-theater"></i> Cultural</span>
+                                <span class="event-date"><i class="far fa-calendar"></i> Nov 20, 2024</span>
+                            </div>
+                            <h3 class="event-title">Cultural Night Extravaganza</h3>
+                            <p class="event-description">Celebrate diversity with dance, music, and performances from around the world.</p>
+                            <div class="event-info">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Open Air Theatre</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>856 Registered</span>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <div class="event-price">₹50</div>
+                                <a href="event-details.html" class="btn btn-primary">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card featured">
+                        <div class="event-badge">New</div>
+                        <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=600" alt="AI Workshop" class="event-image">
+                        <div class="event-content">
+                            <div class="event-meta">
+                                <span class="event-category workshop"><i class="fas fa-chalkboard-teacher"></i> Workshop</span>
+                                <span class="event-date"><i class="far fa-calendar"></i> Nov 25, 2024</span>
+                            </div>
+                            <h3 class="event-title">AI & Machine Learning Workshop</h3>
+                            <p class="event-description">Hands-on workshop on building AI models with Python and TensorFlow.</p>
+                            <div class="event-info">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Computer Lab 3</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>345 Registered</span>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <div class="event-price">₹200</div>
+                                <a href="event-details.html" class="btn btn-primary">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card featured">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600" alt="Sports Day" class="event-image">
+                        <div class="event-content">
+                            <div class="event-meta">
+                                <span class="event-category sports"><i class="fas fa-running"></i> Sports</span>
+                                <span class="event-date"><i class="far fa-calendar"></i> Dec 5, 2024</span>
+                            </div>
+                            <h3 class="event-title">Annual Sports Day 2024</h3>
+                            <p class="event-description">Inter-department sports competition with athletics, cricket, and more.</p>
+                            <div class="event-info">
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Sports Complex</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>678 Registered</span>
+                                </div>
+                            </div>
+                            <div class="event-footer">
+                                <div class="event-price">Free</div>
+                                <a href="event-details.html" class="btn btn-primary">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Categories -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">Explore Events by Category</h2>
+                <p class="section-subtitle">Find events that match your interests and passions</p>
+            </div>
+            
+            <div class="categories-grid">
+                <a href="events.html?category=technical" class="category-card">
+                    <div class="category-icon tech">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Technical</h3>
+                    <p>Hackathons, coding competitions, and tech talks</p>
+                    <span class="category-count">120+ Events</span>
+                </a>
+                
+                <a href="events.html?category=cultural" class="category-card">
+                    <div class="category-icon cultural">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Cultural</h3>
+                    <p>Dance, music, drama, and art exhibitions</p>
+                    <span class="category-count">85+ Events</span>
+                </a>
+                
+                <a href="events.html?category=sports" class="category-card">
+                    <div class="category-icon sports">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Sports</h3>
+                    <p>Tournaments, marathons, and fitness events</p>
+                    <span class="category-count">60+ Events</span>
+                </a>
+                
+                <a href="events.html?category=workshop" class="category-card">
+                    <div class="category-icon workshop">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Workshops</h3>
+                    <p>Skill development and hands-on training</p>
+                    <span class="category-count">95+ Events</span>
+                </a>
+                
+                <a href="events.html?category=hackathon" class="category-card">
+                    <div class="category-icon hackathon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Hackathons</h3>
+                    <p>24-hour coding marathons and challenges</p>
+                    <span class="category-count">40+ Events</span>
+                </a>
+                
+                <a href="events.html?category=seminar" class="category-card">
+                    <div class="category-icon seminar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Seminars</h3>
+                    <p>Guest lectures and knowledge sessions</p>
+                    <span class="category-count">70+ Events</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">What Students Say</h2>
+                <p class="section-subtitle">Real experiences from our vibrant community</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "CampusEvents made it so easy to discover and register for tech events. 
+                        I participated in 3 hackathons this semester and won 2 of them!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Priya+Sharma&background=6C63FF&color=fff" alt="Priya Sharma">
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Computer Science, 3rd Year</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "As an event organizer, this platform simplified everything - from registrations 
+                        to certificate generation. Highly recommended!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Rahul+Verma&background=FF6B6B&color=fff" alt="Rahul Verma">
+                        <div class="author-info">
+                            <h4>Rahul Verma</h4>
+                            <p>Event Coordinator, ECE Dept</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "The personalized recommendations helped me find events aligned with my interests. 
+                        I've made so many new connections!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Ananya+Rao&background=4CAF50&color=fff" alt="Ananya Rao">
+                        <div class="author-info">
+                            <h4>Ananya Rao</h4>
+                            <p>Mechanical Engineering, 2nd Year</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Join thousands of students discovering amazing events every day</p>
+                <div class="cta-buttons">
+                    <a href="registration.html" class="btn btn-white btn-large">
+                        <i class="fas fa-user-plus"></i> Sign Up Now
+                    </a>
+                    <a href="events.html" class="btn btn-outline-white btn-large">
+                        <i class="fas fa-compass"></i> Explore Events
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Campus<strong>Events</strong></span>
+                    </div>
+                    <p>Your ultimate platform for discovering and participating in college events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="events.html">Browse Events</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="venue-booking.html">Book Venue</a></li>
+                        <li><a href="organizer-dashboard.html">Organize Event</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="events.html?category=technical">Technical</a></li>
+                        <li><a href="events.html?category=cultural">Cultural</a></li>
+                        <li><a href="events.html?category=sports">Sports</a></li>
+                        <li><a href="events.html?category=workshop">Workshops</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 CampusEvents. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart"></i> for students</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Welcome to CampusEvents!</span>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
