@@ -1178,9 +1178,14 @@ button {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     opacity: 0.8;
+}
+
+.footer-bottom p {
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .footer-bottom i {
@@ -1196,11 +1201,17 @@ button {
 @media (max-width: 768px) {
     .footer-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-4);
     }
     
     .footer-bottom {
         flex-direction: column;
         gap: var(--space-1);
+        padding: var(--space-3) var(--space-2);
+    }
+    
+    .footer-bottom p {
+        font-size: 0.85rem;
     }
 }
 

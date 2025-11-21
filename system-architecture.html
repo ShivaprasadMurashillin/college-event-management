@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Architecture - College Event Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { 
+            text-align: center; 
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        
+        /* Architecture Diagram */
+        .architecture {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .layer {
+            position: relative;
+        }
+        
+        .layer-title {
+            background: linear-gradient(135deg, #6C63FF, #8B84FF);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .block {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #6C63FF;
+        }
+        
+        .block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.3);
+        }
+        
+        .block h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .block ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .block li {
+            color: #555;
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        
+        .block li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #6C63FF;
+            font-weight: bold;
+        }
+        
+        /* Color coding for different layers */
+        .presentation .block { border-left-color: #FF6B6B; background: linear-gradient(135deg, #ffe5e5 0%, #ffd4d4 100%); }
+        .business .block { border-left-color: #4ECDC4; background: linear-gradient(135deg, #e0f7f6 0%, #c4f1ed 100%); }
+        .data .block { border-left-color: #FFD93D; background: linear-gradient(135deg, #fff9e5 0%, #fff3cc 100%); }
+        .technology .block { border-left-color: #A8E6CF; background: linear-gradient(135deg, #e8f8f2 0%, #d4f1e5 100%); }
+        
+        .presentation .layer-title { background: linear-gradient(135deg, #FF6B6B, #ff8787); }
+        .business .layer-title { background: linear-gradient(135deg, #4ECDC4, #6ed8d1); }
+        .data .layer-title { background: linear-gradient(135deg, #FFD93D, #ffe066); }
+        .technology .layer-title { background: linear-gradient(135deg, #A8E6CF, #bfeddc); }
+        
+        /* Flow Arrows */
+        .flow-arrow {
+            text-align: center;
+            font-size: 2rem;
+            color: #6C63FF;
+            margin: 10px 0;
+        }
+        
+        /* Data Flow Section */
+        .data-flow {
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+        }
+        
+        .data-flow h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .flow-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .flow-box {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 150px;
+        }
+        
+        .flow-box h4 {
+            color: #6C63FF;
+            margin-bottom: 5px;
+        }
+        
+        .flow-arrow-horizontal {
+            font-size: 2rem;
+            color: #6C63FF;
+        }
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; }
+            .block { break-inside: avoid; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .blocks { grid-template-columns: 1fr; }
+            .flow-diagram { flex-direction: column; }
+            .flow-arrow-horizontal { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 College Event Management System</h1>
+        <p class="subtitle">System Architecture & Block Diagram</p>
+        
+        <div class="architecture">
+            <!-- Presentation Layer -->
+            <div class="layer presentation">
+                <div class="layer-title">📱 Presentation Layer (Frontend - HTML/CSS/JavaScript)</div>
+                <div class="blocks">
+                    <div class="block">
+                        <h3>🏠 Landing Page</h3>
+                        <ul>
+                            <li>Hero Section with CTA</li>
+                            <li>Featured Events Carousel</li>
+                            <li>Event Categories Grid</li>
+                            <li>Testimonials Slider</li>
+                            <li>Statistics Counter</li>
+                            <li>Footer with Links</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>🔐 Authentication</h3>
+                        <ul>
+                            <li>Login Page</li>
+                            <li>Signup with Role Selection</li>
+                            <li>Social Login (Google/Microsoft)</li>
+                            <li>Password Toggle</li>
+                            <li>Form Validation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>📅 Events Module</h3>
+                        <ul>
+                            <li>Events Listing with Filters</li>
+                            <li>Search & Sort Functionality</li>
+                            <li>Event Details View</li>
+                            <li>Tabbed Content (Overview/Schedule/Speakers)</li>
+                            <li>Registration Modal</li>
+                            <li>Gallery & FAQs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>👤 User Dashboard</h3>
+                        <ul>
+                            <li>Statistics Overview</li>
+                            <li>Upcoming Events</li>
+                            <li>Certificates Section</li>
+                            <li>Participation History</li>
+                            <li>Analytics Charts</li>
+                            <li>Recommendations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>🎯 Organizer Panel</h3>
+                        <ul>
+                            <li>Create New Event</li>
+                            <li>Event Management Table</li>
+                            <li>Analytics Dashboard</li>
+                            <li>Attendee Management</li>
+                            <li>Certificate Generator</li>
+                            <li>Announcement System</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>🏢 Venue Booking</h3>
+                        <ul>
+                            <li>Venue Cards with Details</li>
+                            <li>Availability Calendar</li>
+                            <li>Amenities Display</li>
+                            <li>Booking Form</li>
+                            <li>Pricing Information</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>👨‍🎓 Profile Management</h3>
+                        <ul>
+                            <li>Avatar Upload</li>
+                            <li>Personal Information</li>
+                            <li>Interests & Preferences</li>
+                            <li>Achievement Badges</li>
+                            <li>Settings & Privacy</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>📝 Registration Flow</h3>
+                        <ul>
+                            <li>Multi-Step Form (5 Steps)</li>
+                            <li>Progress Indicator</li>
+                            <li>Personal Info Collection</li>
+                            <li>Event Selection</li>
+                            <li>Payment Integration</li>
+                            <li>Confirmation & Success</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrow">↓</div>
+            
+            <!-- Business Logic Layer -->
+            <div class="layer business">
+                <div class="layer-title">⚙️ Business Logic Layer (JavaScript)</div>
+                <div class="blocks">
+                    <div class="block">
+                        <h3>🔄 Core Functions</h3>
+                        <ul>
+                            <li>Mobile Menu Toggle</li>
+                            <li>Theme Switcher (Dark Mode)</li>
+                            <li>Sticky Navigation</li>
+                            <li>Scroll Animations</li>
+                            <li>Toast Notifications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>✅ Form Handling</h3>
+                        <ul>
+                            <li>Input Validation</li>
+                            <li>Email/Phone Verification</li>
+                            <li>Multi-Step Form Navigation</li>
+                            <li>Form Data Persistence</li>
+                            <li>Error Messaging</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>🎨 UI Components</h3>
+                        <ul>
+                            <li>Modal System</li>
+                            <li>Carousel/Slider Logic</li>
+                            <li>Tab Switching</li>
+                            <li>Accordion (FAQs)</li>
+                            <li>Dropdown Menus</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>🔍 Event Management</h3>
+                        <ul>
+                            <li>Filter & Search Events</li>
+                            <li>Sort by Date/Category</li>
+                            <li>Pagination Logic</li>
+                            <li>Event Registration</li>
+                            <li>Calendar Integration</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>📊 Analytics</h3>
+                        <ul>
+                            <li>Chart Rendering (Canvas API)</li>
+                            <li>Statistics Counter Animation</li>
+                            <li>Trend Analysis Display</li>
+                            <li>Data Visualization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>🛠️ Utilities</h3>
+                        <ul>
+                            <li>Date Formatting</li>
+                            <li>Countdown Timer</li>
+                            <li>Copy to Clipboard</li>
+                            <li>Share Functionality</li>
+                            <li>Debounce Functions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrow">↓</div>
+            
+            <!-- Data Layer -->
+            <div class="layer data">
+                <div class="layer-title">💾 Data Storage Layer</div>
+                <div class="blocks">
+                    <div class="block">
+                        <h3>🗄️ LocalStorage</h3>
+                        <ul>
+                            <li>Theme Preferences</li>
+                            <li>User Session Data</li>
+                            <li>Form Draft Storage</li>
+                            <li>Recently Viewed Events</li>
+                            <li>User Preferences</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>📋 Static Data</h3>
+                        <ul>
+                            <li>Event Information</li>
+                            <li>Venue Details</li>
+                            <li>Category Metadata</li>
+                            <li>User Profiles (Mock)</li>
+                            <li>Testimonials</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>🔮 Future Integration</h3>
+                        <ul>
+                            <li>Backend API (REST/GraphQL)</li>
+                            <li>Database (MySQL/MongoDB)</li>
+                            <li>Authentication Service</li>
+                            <li>Payment Gateway</li>
+                            <li>Cloud Storage (Images)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrow">↓</div>
+            
+            <!-- Technology Stack -->
+            <div class="layer technology">
+                <div class="layer-title">🔧 Technology Stack</div>
+                <div class="blocks">
+                    <div class="block">
+                        <h3>🎨 Frontend Technologies</h3>
+                        <ul>
+                            <li>HTML5 (Semantic Markup)</li>
+                            <li>CSS3 (Grid, Flexbox, Variables)</li>
+                            <li>JavaScript ES6+ (Vanilla)</li>
+                            <li>Canvas API (Charts)</li>
+                            <li>Intersection Observer API</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>📚 External Libraries</h3>
+                        <ul>
+                            <li>Font Awesome 6.4.0 (Icons)</li>
+                            <li>Google Fonts (Poppins, Inter)</li>
+                            <li>Unsplash API (Images)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>🎭 Design Patterns</h3>
+                        <ul>
+                            <li>CSS Custom Properties</li>
+                            <li>BEM-like Naming Convention</li>
+                            <li>Mobile-First Responsive Design</li>
+                            <li>Glassmorphism Effects</li>
+                            <li>Gradient Backgrounds</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="block">
+                        <h3>🚀 Features Implemented</h3>
+                        <ul>
+                            <li>Dark Mode Toggle</li>
+                            <li>Responsive Design (Mobile/Tablet/Desktop)</li>
+                            <li>Smooth Animations & Transitions</li>
+                            <li>Form Validation</li>
+                            <li>Modal System</li>
+                            <li>Carousel/Slider</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Data Flow Diagram -->
+        <div class="data-flow">
+            <h2>📊 User Interaction Flow</h2>
+            <div class="flow-diagram">
+                <div class="flow-box">
+                    <h4>User Visits</h4>
+                    <p>Landing Page</p>
+                </div>
+                <span class="flow-arrow-horizontal">→</span>
+                <div class="flow-box">
+                    <h4>Browse Events</h4>
+                    <p>Filter & Search</p>
+                </div>
+                <span class="flow-arrow-horizontal">→</span>
+                <div class="flow-box">
+                    <h4>View Details</h4>
+                    <p>Event Info</p>
+                </div>
+                <span class="flow-arrow-horizontal">→</span>
+                <div class="flow-box">
+                    <h4>Login/Signup</h4>
+                    <p>Authentication</p>
+                </div>
+                <span class="flow-arrow-horizontal">→</span>
+                <div class="flow-box">
+                    <h4>Register</h4>
+                    <p>Multi-Step Form</p>
+                </div>
+                <span class="flow-arrow-horizontal">→</span>
+                <div class="flow-box">
+                    <h4>Dashboard</h4>
+                    <p>Track Events</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px; text-align: center;">
+            <h3 style="color: #333; margin-bottom: 10px;">📄 Project Files Structure</h3>
+            <p style="color: #666; font-size: 0.9rem;">
+                <strong>Total Files:</strong> 17 | 
+                <strong>HTML Pages:</strong> 9 | 
+                <strong>CSS Files:</strong> 6 | 
+                <strong>JavaScript:</strong> 1 | 
+                <strong>Documentation:</strong> 1
+            </p>
+        </div>
+    </div>
+</body>
+</html>
