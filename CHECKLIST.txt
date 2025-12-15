@@ -1,0 +1,159 @@
+═══════════════════════════════════════════════════════════════════
+                    SETUP CHECKLIST
+═══════════════════════════════════════════════════════════════════
+
+✅ COMPLETED (Already Done For You):
+
+[✓] Node.js installed (v22.13.1)
+[✓] npm installed (10.9.2)
+[✓] Backend npm packages installed (235 packages)
+[✓] Frontend npm packages installed (353 packages)
+[✓] backend/.env created and configured
+[✓] frontend/.env created and configured
+[✓] JWT secret generated and added to .env
+[✓] uploads/ directory created
+[✓] Helper scripts created (start-project.bat, setup-mysql.bat)
+[✓] Documentation created (START-HERE.md, QUICKSTART.md, SETUP.md)
+
+═══════════════════════════════════════════════════════════════════
+
+⏳ TO DO NOW (Your Tasks):
+
+Step 1: Setup MySQL Database
+[ ] Open MySQL Workbench
+[ ] Connect to Local MySQL instance (enter your password)
+[ ] Click: File → Open SQL Script
+[ ] Navigate to: C:\ThirdYear\WT\WT_SE\backend\database\schema.sql
+[ ] Click Execute button (⚡ lightning bolt icon)
+[ ] Verify success: Should show "6 tables created"
+[ ] Run: SHOW TABLES; (should see: users, events, media, registrations, venues, venue_bookings)
+
+Step 2: Configure MySQL Password
+[ ] Open file: C:\ThirdYear\WT\WT_SE\backend\.env (in notepad or VS Code)
+[ ] Find line: DB_PASSWORD=root
+[ ] Change 'root' to your actual MySQL root password
+[ ] Save the file
+
+Step 3: Run the Project
+[ ] Double-click: start-project.bat (in C:\ThirdYear\WT\WT_SE)
+    OR
+    Manual start:
+    [ ] Open PowerShell/CMD Terminal 1
+    [ ] Run: cd C:\ThirdYear\WT\WT_SE\backend
+    [ ] Run: npm run dev
+    [ ] Open PowerShell/CMD Terminal 2
+    [ ] Run: cd C:\ThirdYear\WT\WT_SE\frontend
+    [ ] Run: npm run dev
+
+Step 4: Test the Application
+[ ] Wait 10-15 seconds for servers to start
+[ ] Open browser: http://localhost:3000
+[ ] Verify you see the home page
+[ ] Check Backend health: http://localhost:5000/health
+
+═══════════════════════════════════════════════════════════════════
+
+🎯 EXPECTED RESULTS:
+
+When Backend Starts (Terminal 1):
+✓ "Server running on port 5000"
+✓ "MySQL Database connected successfully"
+
+When Frontend Starts (Terminal 2):
+✓ "VITE vX.X.X ready in XXX ms"
+✓ "Local: http://localhost:3000"
+
+When You Open localhost:3000:
+✓ See beautiful home page
+✓ Navigation bar with logo
+✓ "Login with Google" button
+✓ Event categories (Technical, Cultural, Sports, Academic)
+✓ Hero section with gradient background
+✓ Feature cards
+
+═══════════════════════════════════════════════════════════════════
+
+⚠️  COMMON ISSUES & SOLUTIONS:
+
+Issue: "Cannot connect to database"
+→ Make sure MySQL Workbench can connect
+→ Verify password in backend\.env is correct
+→ Check database 'college_events' exists
+
+Issue: "Port 5000 already in use"
+→ Run in PowerShell:
+   Get-NetTCPConnection -LocalPort 5000 | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
+
+Issue: "Port 3000 already in use"
+→ Run in PowerShell:
+   Get-NetTCPConnection -LocalPort 3000 | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
+
+Issue: Google Login doesn't work
+→ That's OK! Google OAuth needs setup (optional for now)
+→ You can still test the UI and other features
+→ See QUICKSTART.md for Google OAuth setup later
+
+═══════════════════════════════════════════════════════════════════
+
+📚 DOCUMENTATION FILES:
+
+START-HERE.md    → Quick project overview (READ THIS FIRST!)
+QUICKSTART.md    → Detailed step-by-step guide
+SETUP.md         → Complete setup documentation
+README.md        → Project features and tech stack
+
+═══════════════════════════════════════════════════════════════════
+
+🎓 YOUR PROJECT FEATURES:
+
+Backend (Node.js + Express + MySQL):
+✓ RESTful API with 45+ endpoints
+✓ Google OAuth 2.0 authentication
+✓ JWT token system (30-day expiration)
+✓ Role-based access control (User/Organizer/Admin)
+✓ File upload system (images/videos)
+✓ PDF certificate generation
+✓ Venue booking system
+
+Frontend (React + Vite + Tailwind):
+✓ Modern React 18 with hooks
+✓ Responsive design (mobile-friendly)
+✓ Dark/light theme support
+✓ Protected routes
+✓ API integration with React Query
+✓ Form validation with React Hook Form
+
+Database (MySQL):
+✓ 6 tables with relationships
+✓ Foreign keys and indexes
+✓ Optimized queries
+
+═══════════════════════════════════════════════════════════════════
+
+🚀 QUICK START COMMAND:
+
+Just run this:
+> start-project.bat
+
+That's it! Both servers will start automatically.
+
+═══════════════════════════════════════════════════════════════════
+
+💡 PRO TIPS:
+
+1. Keep MySQL Workbench open to monitor database
+2. Use Browser DevTools (F12) to debug frontend
+3. Check terminal logs for backend errors
+4. Test API endpoints using: http://localhost:5000/health
+5. Google OAuth can be set up later (optional)
+
+═══════════════════════════════════════════════════════════════════
+
+✨ YOU'RE ALL SET!
+
+Everything is installed and ready.
+Just complete the 3 steps above and your project will run!
+
+═══════════════════════════════════════════════════════════════════
+
+Last Updated: December 13, 2025
