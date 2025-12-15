@@ -333,7 +333,12 @@ router.get('/events/:id/registrations', authenticate, authorize('organizer', 'ad
     const { id } = req.params;
     const { status, attended } = req.query;
 
-    let query = `SELECT r.*, u.name, u.email, u.phone, u.department, u.year 
+    let query = `SELECT r.*, 
+                 u.name as user_name, 
+                 u.email as user_email, 
+                 u.phone as user_phone, 
+                 u.department as user_department, 
+                 u.year as user_year 
                  FROM registrations r 
                  LEFT JOIN users u ON r.user_id = u.id 
                  WHERE r.event_id = ?`;
@@ -349,7 +354,7 @@ router.get('/events/:id/registrations', authenticate, authorize('organizer', 'ad
       params.push(attended === 'true' ? 1 : 0);
     }
 
-    query += ' ORDER BY r.registered_at DESC';
+    query += ' ORDER BY r.created_at DESC';
 
     const [registrations] = await promisePool.query(query, params);
 
