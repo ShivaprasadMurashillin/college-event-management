@@ -234,8 +234,8 @@ const ManageMedia = () => {
             {media.map((item) => (
               <div key={item.id} className="relative group">
                 <img
-                  src={`http://localhost:5000${item.media_url}`}
-                  alt={item.caption || 'Event image'}
+                  src={`http://localhost:5000${item.file_url}`}
+                  alt={item.file_name || 'Event image'}
                   className="w-full h-48 object-cover rounded-lg"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition flex items-center justify-center rounded-lg">
@@ -247,9 +247,9 @@ const ManageMedia = () => {
                     Delete
                   </button>
                 </div>
-                {item.caption && (
-                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                    {item.caption}
+                {item.file_name && (
+                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 truncate">
+                    {item.file_name}
                   </p>
                 )}
               </div>

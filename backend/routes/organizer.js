@@ -525,7 +525,7 @@ router.post('/events/:id/media/gallery', authenticate, authorize('organizer', 'a
     const uploadedFiles = [];
 
     for (const file of req.files) {
-      const fileUrl = `/uploads/events/${id}/${file.filename}`;
+      const fileUrl = `/uploads/events/${file.filename}`;
       const mediaType = file.mimetype.startsWith('video/') ? 'video' : 'gallery';
 
       await promisePool.query(

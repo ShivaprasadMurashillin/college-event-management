@@ -195,10 +195,10 @@ const EventDetails = () => {
                   {media.map((item) => (
                     <img
                       key={item.id}
-                      src={`http://localhost:5000${item.media_url}`}
-                      alt={item.caption || 'Event image'}
+                      src={`http://localhost:5000${item.file_url}`}
+                      alt={item.file_name || 'Event image'}
                       className="w-full h-48 object-cover rounded-lg hover:scale-105 transition cursor-pointer"
-                      onClick={() => window.open(`http://localhost:5000${item.media_url}`, '_blank')}
+                      onClick={() => window.open(`http://localhost:5000${item.file_url}`, '_blank')}
                     />
                   ))}
                 </div>
