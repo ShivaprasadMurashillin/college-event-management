@@ -11,8 +11,8 @@ if (!fs.existsSync(uploadsDir)) {
 // Configure storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const eventId = req.params.id || 'general';
-    const dir = path.join(uploadsDir, 'events', eventId.toString());
+    // For event banners and general uploads, use uploads/events
+    const dir = path.join(uploadsDir, 'events');
     
     // Create directory if doesn't exist
     if (!fs.existsSync(dir)) {
