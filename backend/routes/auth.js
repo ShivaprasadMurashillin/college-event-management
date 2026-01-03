@@ -118,11 +118,30 @@ router.get('/google/callback',
         { expiresIn: process.env.JWT_EXPIRES_IN || '30d' }
       );
 
+      // Get the origin from referer or use FRONTEND_URL as fallback
+      const referer = req.get('Referer');
+      let frontendUrl = process.env.FRONTEND_URL;
+      
+      if (referer) {
+        // Extract origin from referer (e.g., http://10.1.27.166:3000)
+        const refererUrl = new URL(referer);
+        frontendUrl = `${refererUrl.protocol}//${refererUrl.host}`;
+      }
+
       // Redirect to frontend with token
-      res.redirect(`${process.env.FRONTEND_URL}/auth/callback?token=${token}`);
+      res.redirect(`${frontendUrl}/auth/callback?token=${token}`);
     } catch (error) {
       console.error('Error generating token:', error);
-      res.redirect(`${process.env.FRONTEND_URL}/login?error=token_generation_failed`);
+      
+      // Use referer for error redirect too
+      const referer = req.get('Referer');
+      let frontendUrl = process.env.FRONTEND_URL;
+      if (referer) {
+        const refererUrl = new URL(referer);
+        frontendUrl = `${refererUrl.protocol}//${refererUrl.host}`;
+      }
+      
+      res.redirect(`${frontendUrl}/login?error=token_generation_failed`);
     }
   }
 );

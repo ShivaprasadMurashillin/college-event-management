@@ -354,7 +354,7 @@ router.get('/events/:id/registrations', authenticate, authorize('organizer', 'ad
       params.push(attended === 'true' ? 1 : 0);
     }
 
-    query += ' ORDER BY r.created_at DESC';
+    query += ' ORDER BY r.registered_at DESC';
 
     const [registrations] = await promisePool.query(query, params);
 

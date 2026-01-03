@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Moon, Sun, Bell, Search, User, LogOut, Settings, LayoutDashboard } from 'lucide-react'
+import { Menu, X, Moon, Sun, Bell, Search, User, LogOut, Settings, LayoutDashboard, Gift, HelpCircle } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useTheme } from '../../contexts/ThemeContext'
+import NotificationDropdown from '../notifications/NotificationDropdown'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,6 +27,7 @@ const Navbar = () => {
     ...(isAuthenticated ? [{ name: 'Dashboard', path: '/dashboard' }] : []),
     ...(isOrganizer ? [{ name: 'Organizer', path: '/organizer' }] : []),
     { name: 'Venues', path: '/venues' },
+    { name: 'Support', path: '/support' },
   ]
 
   const isActive = (path) => location.pathname === path
@@ -83,13 +85,16 @@ const Navbar = () => {
             {isAuthenticated ? (
               <>
                 {/* Notifications */}
-                <button
-                  className="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                  aria-label="Notifications"
+                <NotificationDropdown />
+
+                {/* Referrals */}
+                <Link
+                  to="/referrals"
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  title="Referrals & Rewards"
                 >
-                  <Bell className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                  <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-                </button>
+                  <Gift className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                </Link>
 
                 {/* Profile Dropdown */}
                 <div className="relative">
@@ -121,6 +126,14 @@ const Navbar = () => {
                       >
                         <LayoutDashboard className="w-4 h-4" />
                         <span>Dashboard</span>
+                      </Link>
+                      <Link
+                        to="/referrals"
+                        className="flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        onClick={() => setShowProfileMenu(false)}
+                      >
+                        <Gift className="w-4 h-4" />
+                        <span>Referrals</span>
                       </Link>
                       {isOrganizer && (
                         <Link

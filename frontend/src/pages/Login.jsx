@@ -4,8 +4,7 @@ import { LogIn } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import toast from 'react-hot-toast'
 import axios from 'axios'
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+import API_URL from '../config/api'
 
 const Login = () => {
   const navigate = useNavigate()

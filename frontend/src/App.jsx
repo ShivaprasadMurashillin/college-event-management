@@ -21,6 +21,11 @@ import VenueBooking from './pages/VenueBooking'
 import AdminDashboard from './pages/AdminDashboard'
 import UserManagement from './pages/UserManagement'
 
+// New Feature Pages
+import Notifications from './pages/Notifications'
+import Referrals from './pages/Referrals'
+import Support from './pages/Support'
+
 // Protected Route Components
 import ProtectedRoute from './components/ProtectedRoute'
 import LoadingSpinner from './components/common/LoadingSpinner'
@@ -47,6 +52,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:id" element={<EventDetails />} />
+        <Route path="/support" element={<Support />} />
 
         {/* Protected User Routes */}
         <Route element={<ProtectedRoute />}>
@@ -54,6 +60,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/events/:id/register" element={<Registration />} />
           <Route path="/venues" element={<VenueBooking />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/referrals" element={<Referrals />} />
         </Route>
 
         {/* Protected Organizer Routes */}

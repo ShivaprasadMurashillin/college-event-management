@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 import { Users, Calendar, UserCheck, TrendingUp, Plus, Edit, Trash2, CheckCircle } from 'lucide-react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+import API_URL from '../config/api'
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({ users: 0, organizers: 0, events: 0, registrations: 0 })

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Calendar, MapPin, Users, Upload, X, ArrowLeft } from 'lucide-react'
+import { Calendar, MapPin, Users, Upload, X, ArrowLeft, UserPlus } from 'lucide-react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+import API_URL from '../config/api'
+import CollaboratorManager from '../components/events/CollaboratorManager'
 
 const EditEvent = () => {
   const { id } = useParams()
@@ -12,6 +12,7 @@ const EditEvent = () => {
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
   const [bannerPreview, setBannerPreview] = useState(null)
+  const [showCollaborators, setShowCollaborators] = useState(false)
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -364,6 +365,33 @@ const EditEvent = () => {
           </button>
         </div>
       </form>
+
+      {/* Collaborators Section */}
+      <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl font-bold font-heading flex items-center gap-2">
+            <UserPlus className="w-5 h-5" />
+            Event Collaborators
+          </h2>
+          <button
+            onClick={() => setShowCollaborators(!showCollaborators)}
+            className="text-primary hover:underline text-sm"
+          >
+            {showCollaborators ? 'Hide' : 'Show'} Collaborators
+          </button>
+        </div>
+        
+        {showCollaborators && (
+          <CollaboratorManager eventId={parseInt(id)} isOwner={true} />
+        )}
+        
+        {!showCollaborators && (
+          <p className="text-gray-500 dark:text-gray-400 text-sm">
+            Add team members to help manage this event. Collaborators can edit event details, 
+            view registrations, or moderate content based on their permission level.
+          </p>
+        )}
+      </div>
     </div>
   )
 }

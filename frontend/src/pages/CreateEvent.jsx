@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Calendar, MapPin, Users, Upload, X } from 'lucide-react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+import API_URL from '../config/api'
 
 const CreateEvent = () => {
   const navigate = useNavigate()

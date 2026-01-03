@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Calendar, MapPin, CheckCircle, Clock, XCircle } from 'lucide-react'
+import { Calendar, MapPin, CheckCircle, Clock, XCircle, Download, Award } from 'lucide-react'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 import { useAuth } from '../contexts/AuthContext'
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+import API_URL from '../config/api'
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -36,6 +36,35 @@ const Dashboard = () => {
     }
   }
 
+  const downloadCertificate = async (eventId, eventTitle) => {
+    try {
+      const token = localStorage.getItem('token')
+      const response = await axios.get(`${API_URL}/certificates/download/${eventId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+        responseType: 'blob'
+      })
+      
+      // Create download link
+      const url = window.URL.createObjectURL(new Blob([response.data]))
+      const link = document.createElement('a')
+      link.href = url
+      link.setAttribute('download', `Certificate-${eventTitle.replace(/\s+/g, '_')}.pdf`)
+      document.body.appendChild(link)
+      link.click()
+      link.remove()
+      window.URL.revokeObjectURL(url)
+      
+      toast.success('Certificate downloaded!')
+    } catch (error) {
+      console.error('Error downloading certificate:', error)
+      if (error.response?.status === 404) {
+        toast.error('Certificate not available yet')
+      } else {
+        toast.error('Failed to download certificate')
+      }
+    }
+  }
+
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -46,8 +75,11 @@ const Dashboard = () => {
 
   const getStatusIcon = (status) => {
     switch (status) {
+      case 'attended':
       case 'confirmed':
         return <CheckCircle className="w-5 h-5 text-green-500" />
+      case 'registered':
+        return <Clock className="w-5 h-5 text-blue-500" />
       case 'pending':
         return <Clock className="w-5 h-5 text-yellow-500" />
       case 'cancelled':
@@ -59,13 +91,15 @@ const Dashboard = () => {
 
   const getStatusBadge = (status) => {
     const styles = {
+      registered: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+      attended: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
       confirmed: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
       pending: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400',
       cancelled: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
     }
 
     return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${styles[status] || ''}`}>
+      <span className={`px-2 py-1 rounded-full text-xs font-medium ${styles[status] || 'bg-gray-100 text-gray-700'}`}>
         {status.charAt(0).toUpperCase() + status.slice(1)}
       </span>
     )
@@ -208,16 +242,28 @@ const Dashboard = () => {
                     <div className="flex items-center gap-2 mt-2">
                       {getStatusIcon(reg.status)}
                       <span className="text-xs">
-                        Registered on {formatDate(reg.created_at)}
+                        Registered on {formatDate(reg.registered_at)}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="text-right flex-shrink-0">
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full capitalize">
+                <div className="text-right flex-shrink-0 space-y-2">
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full capitalize block">
                     {reg.category}
                   </span>
+                  
+                  {/* Certificate Download - only for past attended/registered events */}
+                  {(reg.status === 'attended' || (reg.status === 'registered' && new Date(reg.date) < new Date())) && new Date(reg.date) < new Date() && (
+                    <button
+                      onClick={() => downloadCertificate(reg.event_id, reg.title)}
+                      className="flex items-center gap-1 text-xs text-green-600 hover:text-green-700 mt-2"
+                      title="Download Certificate"
+                    >
+                      <Award className="w-4 h-4" />
+                      Certificate
+                    </button>
+                  )}
                 </div>
               </div>
             ))}

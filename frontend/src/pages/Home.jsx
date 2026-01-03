@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Calendar, Users, Award, TrendingUp, ArrowRight, Star } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
+import RecommendedEvents from '../components/events/RecommendedEvents'
 
 const Home = () => {
   const { user, isAuthenticated } = useAuth()
@@ -162,6 +163,15 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Recommended Events Section - Only for authenticated users */}
+      {isAuthenticated && (
+        <section className="py-16 bg-gray-50 dark:bg-gray-800">
+          <div className="container mx-auto px-4">
+            <RecommendedEvents />
+          </div>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-primary to-accent">

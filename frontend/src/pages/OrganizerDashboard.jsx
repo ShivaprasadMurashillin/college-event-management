@@ -4,8 +4,7 @@ import { Calendar, Users, Plus, Edit, Trash2, Image, UserCheck, X, Mail, Phone }
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useAuth } from '../contexts/AuthContext'
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+import API_URL from '../config/api'
 
 const OrganizerDashboard = () => {
   const navigate = useNavigate()
